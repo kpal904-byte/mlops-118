@@ -51,7 +51,7 @@ def health():
 def predict(features: HouseFeatures):
     if model is None:
         return {"error": "Model is not loaded properly"}
-    
+
     # Convert incoming JSON payload to DataFrame using exact features order
     input_df = pd.DataFrame([features.model_dump()])[FEATURES]
     prediction = model.predict(input_df)[0]

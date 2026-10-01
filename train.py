@@ -51,11 +51,12 @@ with mlflow.start_run():
     mlflow.log_metric("mae",mae)
     mlflow.log_metric("rmse",rmse)
     mlflow.log_metric("r2_score",r2)
-    
-    mlflow.sklearn.log_model(
-        model,"model",
-        skops_trusted_types=["sklearn.tree._tree.Tree"]
-    )
-    
-    print(f"\n MAE: {mae:.2f} | RMSE: {rmse:.2f} | R2: {r2:.4f}")
 
+    mlflow.sklearn.log_model(
+    model,
+    "model",
+    registered_model_name="house-price-predictor",
+    skops_trusted_types=["sklearn.tree._tree.Tree"]
+    )
+
+    print(f"\n MAE: {mae:.2f} | RMSE: {rmse:.2f} | R2: {r2:.4f}")
